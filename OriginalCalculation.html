@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Pendapatan Lengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-content {
+            flex-grow: 1;
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .result-box {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            background-color: #D1FAE5; /* green-100 */
+            border-left: 5px solid #10B981; /* green-500 */
+        }
+        .grand-total-box {
+            position: sticky;
+            bottom: 0;
+            background-color: #064E3B; /* green-900 */
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.2);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800">Kalkulator Pendapatan</h1>
+            <p class="text-lg text-gray-600 mt-2">Masukkan jumlah item untuk menghitung estimasi pendapatan Anda.</p>
+        </header>
+
+        <!-- BAGIAN HARGA NORMAL -->
+        <section id="normal-section" class="mb-16">
+            <h2 class="text-3xl font-bold text-green-800 border-b-4 border-green-300 pb-2 mb-8">Harga Normal (Dengan Reputasi)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pertanian Normal -->
+                <div class="card p-6" data-price-type="normal" data-category="pertanian_normal">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🚜 Pertanian</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="font-semibold text-gray-700">Stroberi / Anggur / Kentang / Cabe</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $125 + 1 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah item" class="input-field">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                        <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
+                    </div>
+                </div>
+                <!-- Recycle Normal -->
+                <div class="card p-6" data-price-type="normal" data-category="recycle_normal">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">♻️ Recycle</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="font-semibold text-gray-700">Semua Jenis</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $70 + 0.6 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah item" class="input-field">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                        <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
+                    </div>
+                </div>
+                <!-- Ternak Normal -->
+                <div class="card p-6" data-price-type="normal" data-category="ternak_normal">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🐔🐄🐑 Ternak</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="font-semibold text-gray-700">Telur / Susu</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $75 + 0.5 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="telur_susu">
+                            </div>
+                            <div>
+                                <label class="font-semibold text-gray-700">Daging / Bulu Domba</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $37.5 + 0.25 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="domba">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                        <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
+                    </div>
+                </div>
+                <!-- Kayu Normal -->
+                <div class="card p-6" data-price-type="normal" data-category="kayu_normal">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🪵 Kayu</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="font-semibold text-gray-700">Board</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $1.500 + 12 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="board">
+                            </div>
+                            <div>
+                                <label class="font-semibold text-gray-700">Fine Wood</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $16.500 + 130 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="fine_wood">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                        <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN HARGA PEMERINTAH -->
+        <section id="gov-section">
+            <h2 class="text-3xl font-bold text-green-800 border-b-4 border-green-300 pb-2 mb-8">Harga Pemerintah (Tanpa Reputasi)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pertanian Pemerintah -->
+                <div class="card p-6" data-price-type="gov" data-category="pertanian_gov">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🚜 Pertanian</h3>
+                        <div class="space-y-3">
+                            <div><label class="font-semibold text-gray-700">Mangga / Bawang Merah / Cabe / Kentang ($187.5)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup1"></div>
+                            <div><label class="font-semibold text-gray-700">Lemon / Wortel / Anggur ($250)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup2"></div>
+                            <div><label class="font-semibold text-gray-700">Strawberry ($125)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup3"></div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                    </div>
+                </div>
+                <!-- Menjahit Pemerintah -->
+                <div class="card p-6" data-price-type="gov" data-category="menjahit_gov">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🧵 Menjahit</h3>
+                        <div class="space-y-4">
+                            <div><label class="font-semibold text-gray-700">Kain ($428)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="kain"></div>
+                            <div><label class="font-semibold text-gray-700">Baju ($4.650)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="baju"></div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                    </div>
+                </div>
+                <!-- Kayu Pemerintah -->
+                <div class="card p-6" data-price-type="gov" data-category="kayu_gov">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🪵 Kayu</h3>
+                        <div class="space-y-4">
+                            <div><label class="font-semibold text-gray-700">Board ($2.250)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="board"></div>
+                            <div><label class="font-semibold text-gray-700">Vine Wood ($24.750)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="vine_wood"></div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                    </div>
+                </div>
+                <!-- Recycle Pemerintah -->
+                <div class="card p-6" data-price-type="gov" data-category="recycle_gov">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">♻️ Recycle</h3>
+                        <div class="space-y-4">
+                            <div><label class="font-semibold text-gray-700">Semua Jenis ($150)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1"></div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                    </div>
+                </div>
+                <!-- Karnaval Pemerintah -->
+                <div class="card p-6" data-price-type="gov" data-category="karnaval_gov">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🎪 Karnaval</h3>
+                        <div class="space-y-3">
+                            <div><label class="font-semibold text-gray-700">Bulu / Daging Domba ($105)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="domba"></div>
+                            <div><label class="font-semibold text-gray-700">Susu / Telur ($140)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="susu_telur"></div>
+                            <div><label class="font-semibold text-gray-700">Tomat / Jagung ($150)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="tomat_jagung"></div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TOTAL KESELURUHAN -->
+    <div id="grand-total-container" class="grand-total-box max-w-3xl mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-2">Total Pendapatan Keseluruhan</h3>
+        <div class="flex justify-center items-center space-x-8">
+            <div>
+                <p class="text-lg">Uang:</p>
+                <p class="text-3xl font-bold" id="grand-total-uang">$0</p>
+            </div>
+            <div>
+                <p class="text-lg">Reputasi:</p>
+                <p class="text-3xl font-bold" id="grand-total-rep">0</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const prices = {
+                normal: {
+                    pertanian_normal: { default: { uang: 125, rep: 1 } },
+                    recycle_normal: { default: { uang: 70, rep: 0.6 } },
+                    ternak_normal: {
+                        telur_susu: { uang: 75, rep: 0.5 },
+                        domba: { uang: 37.5, rep: 0.25 }
+                    },
+                    kayu_normal: {
+                        board: { uang: 1500, rep: 12 },
+                        fine_wood: { uang: 16500, rep: 130 }
+                    }
+                },
+                gov: {
+                    pertanian_gov: {
+                        grup1: { uang: 187.5, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
+                        grup2: { uang: 250, rep: 0 },   // Lemon, Wortel, Anggur
+                        grup3: { uang: 125, rep: 0 }    // Strawberry
+                    },
+                    menjahit_gov: {
+                        kain: { uang: 428, rep: 0 },
+                        baju: { uang: 4650, rep: 0 }
+                    },
+                    kayu_gov: {
+                        board: { uang: 2250, rep: 0 },
+                        vine_wood: { uang: 24750, rep: 0 }
+                    },
+                    recycle_gov: { default: { uang: 150, rep: 0 } },
+                    karnaval_gov: {
+                        domba: { uang: 105, rep: 0 },
+                        susu_telur: { uang: 140, rep: 0 },
+                        tomat_jagung: { uang: 150, rep: 0 }
+                    }
+                }
+            };
+
+            function formatCurrency(number) {
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 0
+                }).format(number);
+            }
+
+            function calculateCardTotal(card) {
+                const priceType = card.dataset.priceType;
+                const category = card.dataset.category;
+                let totalUang = 0;
+                let totalRep = 0;
+
+                const inputs = card.querySelectorAll('input.input-field');
+                inputs.forEach(input => {
+                    const quantity = parseInt(input.value) || 0;
+                    const itemType = input.dataset.item || 'default';
+                    const priceData = prices[priceType]?.[category]?.[itemType];
+                    
+                    if (priceData) {
+                        totalUang += quantity * priceData.uang;
+                        totalRep += quantity * priceData.rep;
+                    }
+                });
+
+                const uangResult = card.querySelector('[data-result="uang"]');
+                if (uangResult) uangResult.textContent = formatCurrency(totalUang);
+
+                const repResult = card.querySelector('[data-result="rep"]');
+                if (repResult) repResult.textContent = totalRep.toLocaleString(undefined, {maximumFractionDigits: 2});
+            }
+
+            function updateGrandTotal() {
+                let grandTotalUang = 0;
+                let grandTotalRep = 0;
+                const allCards = document.querySelectorAll('.card');
+
+                allCards.forEach(card => {
+                    const priceType = card.dataset.priceType;
+                    const category = card.dataset.category;
+                    
+                    const inputs = card.querySelectorAll('input.input-field');
+                    inputs.forEach(input => {
+                        const quantity = parseInt(input.value) || 0;
+                        const itemType = input.dataset.item || 'default';
+                        const priceData = prices[priceType]?.[category]?.[itemType];
+
+                        if (priceData) {
+                            grandTotalUang += quantity * priceData.uang;
+                            grandTotalRep += quantity * priceData.rep;
+                        }
+                    });
+                });
+
+                document.getElementById('grand-total-uang').textContent = formatCurrency(grandTotalUang);
+                document.getElementById('grand-total-rep').textContent = grandTotalRep.toLocaleString(undefined, {maximumFractionDigits: 2});
+            }
+
+            const allInputs = document.querySelectorAll('.input-field');
+            allInputs.forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const card = event.target.closest('.card');
+                    calculateCardTotal(card);
+                    updateGrandTotal();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
