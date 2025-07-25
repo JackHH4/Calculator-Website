@@ -142,6 +142,33 @@
                         <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
                     </div>
                 </div>
+                <!-- Karnaval Normal -->
+                <div class="card p-6" data-price-type="normal" data-category="karnaval_normal">
+                    <div class="card-content">
+                        <h3 class="text-2xl font-bold text-green-700 mb-4">🚜 Karnaval</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="font-semibold text-gray-700">Telur / Susu</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $75 + 0.5 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="telur_susu">
+                            </div>
+                            <div>
+                                <label class="font-semibold text-gray-700">Daging / Bulu Domba</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $37.5 + 0.25 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="domba">
+                            </div>
+                            <div>
+                                <label class="font-semibold text-gray-700">Tomat / Jagung</label>
+                                <p class="text-sm text-gray-500 mb-2">Harga: $75 + 0.25 rep /pcs</p>
+                                <input type="number" min="0" placeholder="Jumlah" class="input-field" data-item="tomat_jagung">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <p>Pendapatan: <span class="font-bold" data-result="uang">$0</span></p>
+                        <p>Reputasi: <span class="font-bold" data-result="rep">0</span></p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -247,7 +274,12 @@
                     kayu_normal: {
                         board: { uang: 1500, rep: 12 },
                         fine_wood: { uang: 16500, rep: 130 }
-                    }
+                    },
+                    karnaval_normal: {
+                        domba: { uang: 105, rep: 0.25 },
+                        susu_telur: { uang: 140, rep: 0.5 },
+                        tomat_jagung: { uang: 150, rep: 0.25 }
+                    },
                 },
                 gov: {
                     pertanian_gov: {
