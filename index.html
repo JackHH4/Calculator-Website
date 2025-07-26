@@ -181,9 +181,15 @@
                     <div class="card-content">
                         <h3 class="text-2xl font-bold text-green-700 mb-4">🚜 Pertanian</h3>
                         <div class="space-y-3">
-                            <div><label class="font-semibold text-gray-700">Mangga / Bawang Merah / Cabe / Kentang ($187.5)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup1"></div>
-                            <div><label class="font-semibold text-gray-700">Lemon / Wortel / Anggur ($250)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup2"></div>
-                            <div><label class="font-semibold text-gray-700">Strawberry ($125)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="grup3"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Mangga ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Mangga"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Bawang Merah ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Bawang_Merah"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Cabe ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Cabe"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Kentang ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Kentang"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Lemon ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Lemon"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Wortel ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Wortel"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Anggur ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Anggur"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Padi ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Padi"></div>
+                            <div><label class="font-semibold text-gray-700">Harga Normal Strawberry ($160)</label><input type="number" min="0" placeholder="Jumlah" class="input-field mt-1" data-item="Strawberry"></div>
                         </div>
                     </div>
                     <div class="result-box">
@@ -283,9 +289,15 @@
                 },
                 gov: {
                     pertanian_gov: {
-                        grup1: { uang: 187.5, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
-                        grup2: { uang: 250, rep: 0 },   // Lemon, Wortel, Anggur
-                        grup3: { uang: 125, rep: 0 }    // Strawberry
+                        mangga: { uang: 120, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
+                        Bawang_Merah: { uang: 120, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
+                        Cabe: { uang: 120, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
+                        Kentang: { uang: 120, rep: 0 }, // Mangga, Bawang, Cabe, Kentang
+                        Lemon: { uang: 160, rep: 0 },   // Lemon, Wortel, Anggur
+                        Anggur: { uang: 120, rep: 0 },  // Lemon, Wortel, Anggur
+                        Strawberry: { uang: 80, rep: 0 }, // Strawberry
+                        Wortel: { uang: 160, rep: 0 }    // Wortel
+                        Padi: { uang: 160, rep: 0 }    // Wortel
                     },
                     menjahit_gov: {
                         kain: { uang: 428, rep: 0 },
@@ -295,9 +307,9 @@
                         board: { uang: 2250, rep: 0 },
                         vine_wood: { uang: 24750, rep: 0 }
                     },
-                    recycle_gov: { default: { uang: 150, rep: 0 } },
+                    recycle_gov: { default: { uang: 112.5, rep: 0 } },
                     karnaval_gov: {
-                        domba: { uang: 105, rep: 0 },
+                        domba: { uang: 140, rep: 0 },
                         susu_telur: { uang: 140, rep: 0 },
                         tomat_jagung: { uang: 150, rep: 0 }
                     }
